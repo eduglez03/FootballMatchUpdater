@@ -1,5 +1,8 @@
 package app;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -42,13 +45,58 @@ public class FootballAPIService implements APIService{
     }
   }
 
+  @Override
+  public Map<String, Match> parseMatchResults(String json) {
+    System.out.println("JSON Response: " + json);
 
+    JsonObject response = JsonParser.parseString(json).getAsJsonObject();
+    JsonArray fixtures = response.getAsJsonArray("response");
 
+    Map<String, Match> ongoingMatches = new HashMap<>();
 
+    for (var fixtureElement : fixtures) {
+      JsonObject fixture = fixtureElement.getAsJsonObject();
+      JsonObject teams = fixture.getAsJsonObject("teams");
+      JsonObject goals = fixture.getAsJsonObject("goals");
+      JsonObject status = fixture.has("status") ? fixture.getAsJsonObject("status") : null;
+      JsonObject fixtureStatus = fixture.getAsJsonObject("fixture").getAsJsonObject("status");
+      JsonObject fixtureDetails = fixture.getAsJsonObject("fixture");
 
+      String homeTeam = teams.has("home") && teams.getAsJsonObject("home").has("name")
+              ? teams.getAsJsonObject("home").get("name").getAsString() : "Unknown";
 
+      String awayTeam = teams.has("away") && teams.getAsJsonObject("away").has("name")
+              ? teams.getAsJsonObject("away").get("name").getAsString() : "Unknown";
 
+      String matchId = fixtureDetails.has("id") ? fixtureDetails.get("id").getAsString() : "Unknown";
 
+      // Obtener el minuto actual del partido
+      int timeElapsed = fixtureStatus.has("elapsed") && !fixtureStatus.get("elapsed").isJsonNull()
+              ? fixtureStatus.get("elapsed").getAsInt()
+              : 0;
 
+      boolean isFinished = status != null && status.has("long") && status.get("long").getAsString().equals("Finished");
 
+      int homeGoals = getGoals(goals, "home");
+      int awayGoals = getGoals(goals, "away");
+
+      Match match = new Match(homeTeam, awayTeam, homeGoals, awayGoals, matchId, timeElapsed, isFinished);
+      ongoingMatches.put(matchId, match);
+    }
+    return ongoingMatches;
+  }
+
+  // Método para obtener los goles de un equipo
+  private int getGoals(JsonObject goals, String teamType) {
+    try {
+      if (goals.has(teamType) && !goals.get(teamType).isJsonNull()) {
+        return goals.getAsJsonPrimitive(teamType).getAsInt();
+      } else {
+        return 0;
+      }
+    } catch (Exception e) {
+      System.out.println("Error al procesar los goles para el equipo " + teamType);
+      return 0;
+    }
+  }
 }
