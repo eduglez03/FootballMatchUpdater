@@ -1,7 +1,6 @@
 package app;
 
 public class Match {
-
     private String homeTeam;
     private String awayTeam;
     private int homeGoals;
@@ -9,6 +8,9 @@ public class Match {
     private String matchId;
     private boolean isFinished; // Nuevo campo para almacenar si el partido ha finalizado
     private String changeMessage;
+    private int time; // Nuevo campo para almacenar el minuto del partido
+    private String homeLogo;
+    private String awayLogo;
 
     public Match(String homeTeam, String awayTeam, int homeGoals, int awayGoals, String homeLogo, String awayLogo, String matchId, int time, boolean isFinished) {
         this.homeTeam = homeTeam;
@@ -18,12 +20,15 @@ public class Match {
         this.matchId = matchId;
         this.isFinished = isFinished; // Inicializar estado
         this.changeMessage = ""; // Inicialización vacía
-
+        this.time = time; // Inicializar minuto
+        this.homeLogo = homeLogo;
+        this.awayLogo = awayLogo;
     }
 
     // Getters y Setters
     public boolean isFinished() { return isFinished; }
 
+    public int getTime() { return time; }
 
     public void setFinished(boolean finished) { isFinished = finished; }
 
@@ -39,6 +44,10 @@ public class Match {
     public String getMatchId() { return matchId; }
 
     public String getChangeMessage() { return changeMessage; }
+
+    public String getHomeLogo() { return homeLogo; }
+
+    public String getAwayLogo() { return awayLogo; }
 
     // Setters
     public void setHomeGoals(int homeGoals) { this.homeGoals = homeGoals; }
@@ -57,5 +66,4 @@ public class Match {
     public String toString() {
         return String.format("%s %d - %d %s", homeTeam, homeGoals, awayGoals, awayTeam);
     }
-
 }
