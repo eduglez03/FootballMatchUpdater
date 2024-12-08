@@ -1,4 +1,4 @@
-package com.manning.junitbook;
+package app;
 
 // Interfaz para el Sujeto
 public interface Subject {

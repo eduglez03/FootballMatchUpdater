@@ -1,4 +1,4 @@
-package com.manning.junitbook;
+package app;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,19 +7,19 @@ import java.util.List;
 public class MatchNotifier implements Subject {
     private List<UserSubscriber> observers = new ArrayList<>();
 
-    // Método para añadir observadores
+    // Mï¿½todo para aï¿½adir observadores
     @Override
     public void addObserver(UserSubscriber observer) {
         observers.add(observer);
     }
 
-    // Método para eliminar observadores
+    // Mï¿½todo para eliminar observadores
     @Override
     public void removeObserver(UserSubscriber observer) {
         observers.remove(observer);
     }
 
-    // Método para notificar cambios
+    // Mï¿½todo para notificar cambios
     @Override
     public void notifyChange(Match match) {
         for (UserSubscriber observer : observers) {
