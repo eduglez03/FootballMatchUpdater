@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class FootballAPIService implements APIService{
   private static final String API_URL = "https://v3.football.api-sports.io/fixtures?live=all"; // API URL
-  private static final String API_KEY = "1da0a4f3da1938f5901dae68c725194f"; // API Key
+  private static final String API_KEY = "186dc55fb4942acfd2b06fbf59e11995"; // API Key
 
   /**
    * Fetches the ongoing football match results from the API.
