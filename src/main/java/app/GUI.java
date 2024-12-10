@@ -13,6 +13,12 @@ public class GUI {
     private ScheduledExecutorService scheduler;
     private Map<String, JTextArea> userNotificationAreas;
 
+    public void run() {
+        // Iniciar el sistema: actualizar resultados cada minuto
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(() -> matchUpdater.updateMatchResults(), 0, 1, TimeUnit.MINUTES);
+    }
+
     public GUI() {
         // Inicializar servicios
         FootballAPIService apiService = new FootballAPIService();
@@ -166,7 +172,7 @@ public class GUI {
 
         liveMatchesFrame.setVisible(true);
     }
-    
+
     private void createUserWindow(String username) {
         JFrame userFrame = new JFrame("Notificaciones - " + username);
         userFrame.setSize(400, 300);
