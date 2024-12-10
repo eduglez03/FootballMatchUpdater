@@ -22,3 +22,38 @@ public class GUI {
         this.userNotificationAreas = new HashMap<>();
         createMainInterface();
     }
+
+    private void createMainInterface() {
+        JFrame mainFrame = new JFrame("Sistema de Notificaciones");
+        mainFrame.setSize(400, 300);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setLayout(new GridLayout(4, 1));  // Aumentamos las filas para incluir el nuevo botón
+
+        JLabel titleLabel = new JLabel("Sistema de notificaciones de partidos", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
+        JButton liveMatchesButton = new JButton("Mostrar partidos en directo");
+        JButton registerButton = new JButton("Registrarme");
+        JButton exitButton = new JButton("Salir");  // Nuevo botón "Salir"
+
+        // Acción para el botón de "Mostrar partidos en directo"
+        liveMatchesButton.addActionListener(e -> showLiveMatches(mainFrame));
+
+        // Acción para el botón de "Registrarme"
+        registerButton.addActionListener(e -> registerUsers(mainFrame));
+
+        // Acción para el botón de "Salir"
+        exitButton.addActionListener(e -> {
+            // Cerrar la ventana principal y terminar el programa
+            mainFrame.dispose();
+            System.exit(0);  // Finaliza la ejecución del programa
+        });
+
+        // Añadir los componentes a la ventana
+        mainFrame.add(titleLabel);
+        mainFrame.add(liveMatchesButton);
+        mainFrame.add(registerButton);
+        mainFrame.add(exitButton);  // Añadir el botón "Salir"
+
+        mainFrame.setVisible(true);
+    }
