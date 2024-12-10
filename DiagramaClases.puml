@@ -1,0 +1,110 @@
+@startuml
+class app.MatchUpdater {
+- FootballAPIService apiService
+- MatchNotifier matchNotifier
+- Map<String,Match> ongoingMatches
++ void updateMatchResults()
+- void compareAndNotifyMatches(Map<String,Match>)
++ Map<String,Match> getLiveMatches()
+- boolean hasMatchChanged(Match,Match)
+}
+
+
+class app.AppTest {
++ {static} Test suite()
++ void testApp()
+}
+
+interface app.APIService {
+~ Map<String,Match> fetchMatchResults()
+~ Map<String,Match> parseMatchResults(String)
+}
+
+class app.App {
++ {static} void main(String[])
+}
+
+interface app.Observer {
+~ void update(Match)
+}
+
+abstract class app.UserSubscriber {
+- String username
+- Map<String,JTextArea> userNotificationAreas
++ void update(Match)
++ String getUsername()
+}
+
+
+class app.MatchNotifier {
+- List<UserSubscriber> observers
++ void addObserver(UserSubscriber)
++ void removeObserver(UserSubscriber)
++ void notifyChange(Match)
+}
+
+
+class app.FootballAPIService {
+- {static} String API_URL
+- {static} String API_KEY
++ Map<String,Match> fetchMatchResults()
++ Map<String,Match> parseMatchResults(String)
+- int getGoals(JsonObject,String)
+}
+
+
+class app.GUI {
+- MatchNotifier matchNotifier
+- MatchUpdater matchUpdater
+- List<UserSubscriber> subscribers
+- ScheduledExecutorService scheduler
+- Map<String,JTextArea> userNotificationAreas
++ void run()
+- void createMainInterface()
+- void registerUsers(JFrame)
+- void showLiveMatches(JFrame)
+- void createUserWindow(String)
+}
+
+
+class app.Match {
+- String homeTeam
+- String awayTeam
+- int homeGoals
+- int awayGoals
+- String matchId
+- boolean isFinished
+- String changeMessage
+- int time
++ boolean isFinished()
++ int getTime()
++ String getHomeTeam()
++ String getAwayTeam()
++ int getHomeGoals()
++ int getAwayGoals()
++ String getMatchId()
++ String getChangeMessage()
++ void setHomeGoals(int)
++ void setFinished(boolean)
++ void setChangeMessage(String)
++ void setAwayGoals(int)
++ void setHomeTeam(String)
++ void setAwayTeam(String)
++ void setMatchId(String)
++ String toString()
+}
+
+
+interface app.Subject {
+~ void addObserver(UserSubscriber)
+~ void removeObserver(UserSubscriber)
+~ void notifyChange(Match)
+}
+
+
+
+junit.framework.TestCase <|-- app.AppTest
+app.Observer <|.. app.UserSubscriber
+app.Subject <|.. app.MatchNotifier
+app.APIService <|.. app.FootballAPIService
+@enduml
