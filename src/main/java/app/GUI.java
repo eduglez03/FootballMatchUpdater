@@ -84,6 +84,89 @@ public class GUI {
         registerFrame.setVisible(true);
     }
 
+    private void showLiveMatches(JFrame parentFrame) {
+        JFrame liveMatchesFrame = new JFrame("Partidos en directo");
+        liveMatchesFrame.setSize(500, 500);  // Aumentar el tamaño para mejorar la disposición
+        liveMatchesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        liveMatchesFrame.setLayout(new BorderLayout(10, 10)); // Espaciado entre los componentes
+
+        // Crear los datos de la tabla
+        String[] columnNames = {"Equipo Local", "Goles Local", "Tiempo Juego", "Goles Visitante", "Equipo Visitante"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        JTable matchesTable = new JTable(tableModel);
+
+        // Configurar la tabla
+        matchesTable.setDefaultEditor(Object.class, null);  // Desactivar edición de celdas
+        matchesTable.getTableHeader().setReorderingAllowed(false); // Desactivar reordenamiento de columnas
+        matchesTable.setAutoCreateRowSorter(true); // Para ordenar las filas
+        matchesTable.setShowGrid(true); // Mostrar divisiones entre filas y columnas
+        matchesTable.setGridColor(Color.BLACK); // Color de las divisiones
+        matchesTable.setRowHeight(30); // Ajustar altura de las filas
+        matchesTable.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente más grande para las filas
+
+        // Personalizar la fila de encabezados
+        JTableHeader header = matchesTable.getTableHeader();
+        header.setBackground(new Color(220, 220, 220)); // Color de fondo del encabezado
+        header.setFont(new Font("Arial", Font.BOLD, 14)); // Fuente en negrita y tamaño
+        header.setPreferredSize(new Dimension(0, 40)); // Aumentar altura del encabezado
+
+        // Alineación de las columnas
+        for (int i = 0; i < matchesTable.getColumnCount(); i++) {
+            matchesTable.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    if (column == 2) { // Columna "Tiempo Juego"
+                        setHorizontalAlignment(SwingConstants.CENTER);  // Centrar la columna
+                        setText(value + " ''");  // Agregar el "min" al valor
+                    } else {
+                        setHorizontalAlignment(SwingConstants.CENTER); // Centrar las otras columnas
+                    }
+                    return c;
+                }
+            });
+        }
+
+        // Agregar los partidos a la tabla
+        Map<String, Match> liveMatches = matchUpdater.getLiveMatches();
+        for (Match match : liveMatches.values()) {
+            Object[] row = {
+                    match.getHomeTeam(),
+                    match.getHomeGoals(),
+                    match.getTime(),
+                    match.getAwayGoals(),
+                    match.getAwayTeam()
+            };
+            tableModel.addRow(row);
+        }
+
+        JScrollPane scrollPane = new JScrollPane(matchesTable);
+
+        // Botón de "Volver" estilizado
+        JButton backButton = new JButton("Volver");
+        backButton.setFont(new Font("Arial", Font.BOLD, 14));  // Fuente más grande y en negrita
+        backButton.setBackground(new Color(70, 130, 180));  // Color de fondo del botón
+        backButton.setForeground(Color.BLACK);  // Color del texto
+        backButton.setFocusPainted(false);  // Eliminar el foco del botón
+        backButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Añadir relleno
+        backButton.addActionListener(e -> liveMatchesFrame.dispose());
+
+        // Crear un JPanel para el encabezado y centrarlo
+        JPanel headerPanel = new JPanel();
+        headerPanel.setLayout(new BorderLayout());
+        JLabel titleLabel = new JLabel("Partidos en Directo", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));  // Fuente más grande y en negrita
+        titleLabel.setForeground(new Color(70, 130, 180));  // Color del texto del título
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+
+        // Añadir componentes al frame
+        liveMatchesFrame.add(headerPanel, BorderLayout.NORTH);  // Título en el norte
+        liveMatchesFrame.add(scrollPane, BorderLayout.CENTER); // Tabla en el centro
+        liveMatchesFrame.add(backButton, BorderLayout.SOUTH);  // Botón en el sur
+
+        liveMatchesFrame.setVisible(true);
+    }
+    
     private void createUserWindow(String username) {
         JFrame userFrame = new JFrame("Notificaciones - " + username);
         userFrame.setSize(400, 300);
