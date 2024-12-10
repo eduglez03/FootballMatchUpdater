@@ -1,0 +1,117 @@
+\doxysection{app.\+Match\+Updater Class Reference}
+\hypertarget{classapp_1_1_match_updater}{}\label{classapp_1_1_match_updater}\index{app.MatchUpdater@{app.MatchUpdater}}
+
+
+Collaboration diagram for app.\+Match\+Updater\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1_match_updater__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapp_1_1_match_updater_a775210f74c3ac052b1ebbd29064819e6}{Match\+Updater}} (\mbox{\hyperlink{classapp_1_1_football_a_p_i_service}{Football\+APIService}} api\+Service, \mbox{\hyperlink{classapp_1_1_match_notifier}{Match\+Notifier}} match\+Notifier)
+\item 
+void \mbox{\hyperlink{classapp_1_1_match_updater_a7dd651eef310504f57d35f4cdb3e25c2}{update\+Match\+Results}} ()
+\item 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ \mbox{\hyperlink{classapp_1_1_match_updater_ac8ad213f43864e3ba024c2dbe3e2d907}{get\+Live\+Matches}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1_match_updater_a1945390717ec795343a91a12c3142a39}{compare\+And\+Notify\+Matches}} (Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ new\+Matches)
+\item 
+boolean \mbox{\hyperlink{classapp_1_1_match_updater_afb4d1e358dea5344db8f811b3c498405}{has\+Match\+Changed}} (\mbox{\hyperlink{classapp_1_1_match}{Match}} new\+Match, \mbox{\hyperlink{classapp_1_1_match}{Match}} old\+Match)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classapp_1_1_match_updater_af870c9b1ba84d09cc42cf017294ca10c}\label{classapp_1_1_match_updater_af870c9b1ba84d09cc42cf017294ca10c} 
+final \mbox{\hyperlink{classapp_1_1_football_a_p_i_service}{Football\+APIService}} {\bfseries api\+Service}
+\item 
+\Hypertarget{classapp_1_1_match_updater_a9a3380ff954b60893d1d8e76c7d3a723}\label{classapp_1_1_match_updater_a9a3380ff954b60893d1d8e76c7d3a723} 
+final \mbox{\hyperlink{classapp_1_1_match_notifier}{Match\+Notifier}} {\bfseries match\+Notifier}
+\item 
+\Hypertarget{classapp_1_1_match_updater_ad113113a6ea0a7cd4a4a251e2fd69047}\label{classapp_1_1_match_updater_ad113113a6ea0a7cd4a4a251e2fd69047} 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ {\bfseries ongoing\+Matches}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that updates match results and notifies users of any changes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classapp_1_1_match_updater_a775210f74c3ac052b1ebbd29064819e6}\index{app.MatchUpdater@{app.MatchUpdater}!MatchUpdater@{MatchUpdater}}
+\index{MatchUpdater@{MatchUpdater}!app.MatchUpdater@{app.MatchUpdater}}
+\doxysubsubsection{\texorpdfstring{MatchUpdater()}{MatchUpdater()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_updater_a775210f74c3ac052b1ebbd29064819e6} 
+app.\+Match\+Updater.\+Match\+Updater (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1_football_a_p_i_service}{Football\+APIService}}}]{api\+Service}{, }\item[{\mbox{\hyperlink{classapp_1_1_match_notifier}{Match\+Notifier}}}]{match\+Notifier}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor to initialize the \doxylink{classapp_1_1_match_updater}{Match\+Updater} with the API service and match notifier.
+
+
+\begin{DoxyParams}{Parameters}
+{\em api\+Service} & The API service to fetch match results \\
+\hline
+{\em match\+Notifier} & The match notifier to send notifications \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classapp_1_1_match_updater_a1945390717ec795343a91a12c3142a39}\index{app.MatchUpdater@{app.MatchUpdater}!compareAndNotifyMatches@{compareAndNotifyMatches}}
+\index{compareAndNotifyMatches@{compareAndNotifyMatches}!app.MatchUpdater@{app.MatchUpdater}}
+\doxysubsubsection{\texorpdfstring{compareAndNotifyMatches()}{compareAndNotifyMatches()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_updater_a1945390717ec795343a91a12c3142a39} 
+void app.\+Match\+Updater.\+compare\+And\+Notify\+Matches (\begin{DoxyParamCaption}\item[{Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$}]{new\+Matches}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to compare the new match results with the ongoing matches and notify users of any changes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Matches} & The new match results to compare \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classapp_1_1_match_updater_ac8ad213f43864e3ba024c2dbe3e2d907}\index{app.MatchUpdater@{app.MatchUpdater}!getLiveMatches@{getLiveMatches}}
+\index{getLiveMatches@{getLiveMatches}!app.MatchUpdater@{app.MatchUpdater}}
+\doxysubsubsection{\texorpdfstring{getLiveMatches()}{getLiveMatches()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_updater_ac8ad213f43864e3ba024c2dbe3e2d907} 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ app.\+Match\+Updater.\+get\+Live\+Matches (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to get the live matches.
+
+\begin{DoxyReturn}{Returns}
+A map of live matches 
+\end{DoxyReturn}
+\Hypertarget{classapp_1_1_match_updater_afb4d1e358dea5344db8f811b3c498405}\index{app.MatchUpdater@{app.MatchUpdater}!hasMatchChanged@{hasMatchChanged}}
+\index{hasMatchChanged@{hasMatchChanged}!app.MatchUpdater@{app.MatchUpdater}}
+\doxysubsubsection{\texorpdfstring{hasMatchChanged()}{hasMatchChanged()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_updater_afb4d1e358dea5344db8f811b3c498405} 
+boolean app.\+Match\+Updater.\+has\+Match\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1_match}{Match}}}]{new\+Match}{, }\item[{\mbox{\hyperlink{classapp_1_1_match}{Match}}}]{old\+Match}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to check if a match has changed and update the match details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Match} & The new match details \\
+\hline
+{\em old\+Match} & The old match details \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A boolean indicating if the match has changed 
+\end{DoxyReturn}
+\Hypertarget{classapp_1_1_match_updater_a7dd651eef310504f57d35f4cdb3e25c2}\index{app.MatchUpdater@{app.MatchUpdater}!updateMatchResults@{updateMatchResults}}
+\index{updateMatchResults@{updateMatchResults}!app.MatchUpdater@{app.MatchUpdater}}
+\doxysubsubsection{\texorpdfstring{updateMatchResults()}{updateMatchResults()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_updater_a7dd651eef310504f57d35f4cdb3e25c2} 
+void app.\+Match\+Updater.\+update\+Match\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to update the match results and notify users of any changes. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/app/Match\+Updater.\+java\end{DoxyCompactItemize}

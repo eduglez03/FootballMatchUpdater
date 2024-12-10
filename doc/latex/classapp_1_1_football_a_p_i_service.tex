@@ -1,0 +1,108 @@
+\doxysection{app.\+Football\+APIService Class Reference}
+\hypertarget{classapp_1_1_football_a_p_i_service}{}\label{classapp_1_1_football_a_p_i_service}\index{app.FootballAPIService@{app.FootballAPIService}}
+
+
+Inheritance diagram for app.\+Football\+APIService\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classapp_1_1_football_a_p_i_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for app.\+Football\+APIService\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classapp_1_1_football_a_p_i_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ \mbox{\hyperlink{classapp_1_1_football_a_p_i_service_ae06f2ef3e4776b8612156a3e71ba9c2d}{fetch\+Match\+Results}} ()
+\item 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ \mbox{\hyperlink{classapp_1_1_football_a_p_i_service_abc566f57bae7b4a56f0ba637985adc97}{parse\+Match\+Results}} (String json)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceapp_1_1_a_p_i_service}{app.\+APIService}}}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classapp_1_1_football_a_p_i_service_affbb2e8b951ea7a690e08127117394d9}{get\+Goals}} (Json\+Object goals, String team\+Type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classapp_1_1_football_a_p_i_service_ab682c95addcf1e940a1e39a362a7578a}\label{classapp_1_1_football_a_p_i_service_ab682c95addcf1e940a1e39a362a7578a} 
+static final String {\bfseries API\+\_\+\+URL} = "{}https\+://v3.\+football.\+api-\/sports.\+io/fixtures?live=all"{}
+\item 
+\Hypertarget{classapp_1_1_football_a_p_i_service_a852cd7f9a83e653eff75cb8163000500}\label{classapp_1_1_football_a_p_i_service_a852cd7f9a83e653eff75cb8163000500} 
+static final String {\bfseries API\+\_\+\+KEY} = "{}186dc55fb4942acfd2b06fbf59e11995"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the \doxylink{interfaceapp_1_1_a_p_i_service}{APIService} interface for fetching football match results from a public API. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classapp_1_1_football_a_p_i_service_ae06f2ef3e4776b8612156a3e71ba9c2d}\index{app.FootballAPIService@{app.FootballAPIService}!fetchMatchResults@{fetchMatchResults}}
+\index{fetchMatchResults@{fetchMatchResults}!app.FootballAPIService@{app.FootballAPIService}}
+\doxysubsubsection{\texorpdfstring{fetchMatchResults()}{fetchMatchResults()}}
+{\footnotesize\ttfamily \label{classapp_1_1_football_a_p_i_service_ae06f2ef3e4776b8612156a3e71ba9c2d} 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ app.\+Football\+APIService.\+fetch\+Match\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Fetches the ongoing football match results from the API.
+
+\begin{DoxyReturn}{Returns}
+A map containing the match results. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceapp_1_1_a_p_i_service}{app.\+APIService}}.
+
+\Hypertarget{classapp_1_1_football_a_p_i_service_affbb2e8b951ea7a690e08127117394d9}\index{app.FootballAPIService@{app.FootballAPIService}!getGoals@{getGoals}}
+\index{getGoals@{getGoals}!app.FootballAPIService@{app.FootballAPIService}}
+\doxysubsubsection{\texorpdfstring{getGoals()}{getGoals()}}
+{\footnotesize\ttfamily \label{classapp_1_1_football_a_p_i_service_affbb2e8b951ea7a690e08127117394d9} 
+int app.\+Football\+APIService.\+get\+Goals (\begin{DoxyParamCaption}\item[{Json\+Object}]{goals}{, }\item[{String}]{team\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Gets the goals scored by a team from the JSON object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em goals} & The JSON object containing the goals. \\
+\hline
+{\em team\+Type} & The type of team (home or away). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of goals scored by the team. 
+\end{DoxyReturn}
+\Hypertarget{classapp_1_1_football_a_p_i_service_abc566f57bae7b4a56f0ba637985adc97}\index{app.FootballAPIService@{app.FootballAPIService}!parseMatchResults@{parseMatchResults}}
+\index{parseMatchResults@{parseMatchResults}!app.FootballAPIService@{app.FootballAPIService}}
+\doxysubsubsection{\texorpdfstring{parseMatchResults()}{parseMatchResults()}}
+{\footnotesize\ttfamily \label{classapp_1_1_football_a_p_i_service_abc566f57bae7b4a56f0ba637985adc97} 
+Map$<$ String, \mbox{\hyperlink{classapp_1_1_match}{Match}} $>$ app.\+Football\+APIService.\+parse\+Match\+Results (\begin{DoxyParamCaption}\item[{String}]{json}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Parses the JSON response from the API to a map of match results.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The JSON response from the API. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A map containing the match results. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfaceapp_1_1_a_p_i_service}{app.\+APIService}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/app/Football\+APIService.\+java\end{DoxyCompactItemize}

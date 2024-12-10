@@ -1,0 +1,94 @@
+\doxysection{app.\+Match\+Notifier Class Reference}
+\hypertarget{classapp_1_1_match_notifier}{}\label{classapp_1_1_match_notifier}\index{app.MatchNotifier@{app.MatchNotifier}}
+
+
+Inheritance diagram for app.\+Match\+Notifier\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classapp_1_1_match_notifier__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for app.\+Match\+Notifier\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{classapp_1_1_match_notifier__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1_match_notifier_adf9d842655bc007cde86feaa613d20a0}{add\+Observer}} (\mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}} observer)
+\item 
+void \mbox{\hyperlink{classapp_1_1_match_notifier_a9e797addc9cec0c53ad36977710a4a7a}{remove\+Observer}} (\mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}} observer)
+\item 
+void \mbox{\hyperlink{classapp_1_1_match_notifier_acec2760f99940e6184a15a5c38b73e9e}{notify\+Change}} (\mbox{\hyperlink{classapp_1_1_match}{Match}} match)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfaceapp_1_1_subject}{app.\+Subject}}}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classapp_1_1_match_notifier_a99fee414168ae2369862a2b23e04ff89}\label{classapp_1_1_match_notifier_a99fee414168ae2369862a2b23e04ff89} 
+List$<$ \mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}} $>$ {\bfseries observers} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to notify changes to observers 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classapp_1_1_match_notifier_adf9d842655bc007cde86feaa613d20a0}\index{app.MatchNotifier@{app.MatchNotifier}!addObserver@{addObserver}}
+\index{addObserver@{addObserver}!app.MatchNotifier@{app.MatchNotifier}}
+\doxysubsubsection{\texorpdfstring{addObserver()}{addObserver()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_notifier_adf9d842655bc007cde86feaa613d20a0} 
+void app.\+Match\+Notifier.\+add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}}}]{observer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to add observers 
+\begin{DoxyParams}{Parameters}
+{\em observer} & \doxylink{interfaceapp_1_1_observer}{Observer} to add \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfaceapp_1_1_subject}{app.\+Subject}}.
+
+\Hypertarget{classapp_1_1_match_notifier_acec2760f99940e6184a15a5c38b73e9e}\index{app.MatchNotifier@{app.MatchNotifier}!notifyChange@{notifyChange}}
+\index{notifyChange@{notifyChange}!app.MatchNotifier@{app.MatchNotifier}}
+\doxysubsubsection{\texorpdfstring{notifyChange()}{notifyChange()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_notifier_acec2760f99940e6184a15a5c38b73e9e} 
+void app.\+Match\+Notifier.\+notify\+Change (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1_match}{Match}}}]{match}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to notify changes to observers 
+\begin{DoxyParams}{Parameters}
+{\em match} & \doxylink{classapp_1_1_match}{Match} to notify \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfaceapp_1_1_subject}{app.\+Subject}}.
+
+\Hypertarget{classapp_1_1_match_notifier_a9e797addc9cec0c53ad36977710a4a7a}\index{app.MatchNotifier@{app.MatchNotifier}!removeObserver@{removeObserver}}
+\index{removeObserver@{removeObserver}!app.MatchNotifier@{app.MatchNotifier}}
+\doxysubsubsection{\texorpdfstring{removeObserver()}{removeObserver()}}
+{\footnotesize\ttfamily \label{classapp_1_1_match_notifier_a9e797addc9cec0c53ad36977710a4a7a} 
+void app.\+Match\+Notifier.\+remove\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}}}]{observer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to remove observers 
+\begin{DoxyParams}{Parameters}
+{\em observer} & \doxylink{interfaceapp_1_1_observer}{Observer} to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfaceapp_1_1_subject}{app.\+Subject}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/app/Match\+Notifier.\+java\end{DoxyCompactItemize}

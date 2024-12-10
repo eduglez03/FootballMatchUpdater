@@ -1,0 +1,113 @@
+\doxysection{app.\+GUI Class Reference}
+\hypertarget{classapp_1_1_g_u_i}{}\label{classapp_1_1_g_u_i}\index{app.GUI@{app.GUI}}
+
+
+Collaboration diagram for app.\+GUI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapp_1_1_g_u_i__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1_g_u_i_afe4cd156855b50f7c4f9440a44207ddc}{run}} ()
+\item 
+\mbox{\hyperlink{classapp_1_1_g_u_i_a745747300bd4875ba2eee3fbac660aef}{GUI}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapp_1_1_g_u_i_a7de28359009cfffccf3b9d6b2abcf485}{create\+Main\+Interface}} ()
+\item 
+void \mbox{\hyperlink{classapp_1_1_g_u_i_a46c6e1203b1c32b02c0ba5d9638a6c7c}{register\+Users}} (JFrame parent\+Frame)
+\item 
+void \mbox{\hyperlink{classapp_1_1_g_u_i_a7d7c58cf17fc9872859222b35c896048}{show\+Live\+Matches}} (JFrame parent\+Frame)
+\item 
+void \mbox{\hyperlink{classapp_1_1_g_u_i_ad189b47a1dbed8f3616fcc149ab8588b}{create\+User\+Window}} (String username)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classapp_1_1_g_u_i_aadcfbba508dfeefaaeb33e4de3e86cac}\label{classapp_1_1_g_u_i_aadcfbba508dfeefaaeb33e4de3e86cac} 
+\mbox{\hyperlink{classapp_1_1_match_notifier}{Match\+Notifier}} {\bfseries match\+Notifier}
+\item 
+\Hypertarget{classapp_1_1_g_u_i_abaf48aedad9e02507b65b17f2cab03dd}\label{classapp_1_1_g_u_i_abaf48aedad9e02507b65b17f2cab03dd} 
+\mbox{\hyperlink{classapp_1_1_match_updater}{Match\+Updater}} {\bfseries match\+Updater}
+\item 
+\Hypertarget{classapp_1_1_g_u_i_aaf05a714a354d18f9416cc49e57674c6}\label{classapp_1_1_g_u_i_aaf05a714a354d18f9416cc49e57674c6} 
+List$<$ \mbox{\hyperlink{classapp_1_1_user_subscriber}{User\+Subscriber}} $>$ {\bfseries subscribers}
+\item 
+\Hypertarget{classapp_1_1_g_u_i_a1d090a5475520567f01c5b2b4927d501}\label{classapp_1_1_g_u_i_a1d090a5475520567f01c5b2b4927d501} 
+Scheduled\+Executor\+Service {\bfseries scheduler}
+\item 
+\Hypertarget{classapp_1_1_g_u_i_add00f08f7c75efa9cf61e7228783d20f}\label{classapp_1_1_g_u_i_add00f08f7c75efa9cf61e7228783d20f} 
+Map$<$ String, JText\+Area $>$ {\bfseries user\+Notification\+Areas}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to create the main \doxylink{classapp_1_1_g_u_i}{GUI} of the application 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classapp_1_1_g_u_i_a745747300bd4875ba2eee3fbac660aef}\index{app.GUI@{app.GUI}!GUI@{GUI}}
+\index{GUI@{GUI}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{GUI()}{GUI()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_a745747300bd4875ba2eee3fbac660aef} 
+app.\+GUI.\+GUI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor of the class 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classapp_1_1_g_u_i_a7de28359009cfffccf3b9d6b2abcf485}\index{app.GUI@{app.GUI}!createMainInterface@{createMainInterface}}
+\index{createMainInterface@{createMainInterface}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{createMainInterface()}{createMainInterface()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_a7de28359009cfffccf3b9d6b2abcf485} 
+void app.\+GUI.\+create\+Main\+Interface (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to create the main interface of the application \Hypertarget{classapp_1_1_g_u_i_ad189b47a1dbed8f3616fcc149ab8588b}\index{app.GUI@{app.GUI}!createUserWindow@{createUserWindow}}
+\index{createUserWindow@{createUserWindow}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{createUserWindow()}{createUserWindow()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_ad189b47a1dbed8f3616fcc149ab8588b} 
+void app.\+GUI.\+create\+User\+Window (\begin{DoxyParamCaption}\item[{String}]{username}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to create the user window 
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classapp_1_1_g_u_i_a46c6e1203b1c32b02c0ba5d9638a6c7c}\index{app.GUI@{app.GUI}!registerUsers@{registerUsers}}
+\index{registerUsers@{registerUsers}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{registerUsers()}{registerUsers()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_a46c6e1203b1c32b02c0ba5d9638a6c7c} 
+void app.\+GUI.\+register\+Users (\begin{DoxyParamCaption}\item[{JFrame}]{parent\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to register users in the application 
+\begin{DoxyParams}{Parameters}
+{\em parent\+Frame} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classapp_1_1_g_u_i_afe4cd156855b50f7c4f9440a44207ddc}\index{app.GUI@{app.GUI}!run@{run}}
+\index{run@{run}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_afe4cd156855b50f7c4f9440a44207ddc} 
+void app.\+GUI.\+run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to start the application \Hypertarget{classapp_1_1_g_u_i_a7d7c58cf17fc9872859222b35c896048}\index{app.GUI@{app.GUI}!showLiveMatches@{showLiveMatches}}
+\index{showLiveMatches@{showLiveMatches}!app.GUI@{app.GUI}}
+\doxysubsubsection{\texorpdfstring{showLiveMatches()}{showLiveMatches()}}
+{\footnotesize\ttfamily \label{classapp_1_1_g_u_i_a7d7c58cf17fc9872859222b35c896048} 
+void app.\+GUI.\+show\+Live\+Matches (\begin{DoxyParamCaption}\item[{JFrame}]{parent\+Frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Method to show the live matches in the application 
+\begin{DoxyParams}{Parameters}
+{\em parent\+Frame} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/app/GUI.\+java\end{DoxyCompactItemize}

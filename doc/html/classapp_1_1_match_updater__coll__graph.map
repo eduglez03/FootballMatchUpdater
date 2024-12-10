@@ -1,0 +1,15 @@
+<map id="app.MatchUpdater" name="app.MatchUpdater">
+<area shape="rect" id="Node000001" title=" " alt="" coords="186,183,314,208"/>
+<area shape="rect" id="Node000002" href="$classapp_1_1_football_a_p_i_service.html" title=" " alt="" coords="5,94,164,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,125,181,156,227,180,224,185,178,161,119,130"/>
+<area shape="rect" id="Node000003" href="$interfaceapp_1_1_a_p_i_service.html" title=" " alt="" coords="28,5,141,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,47,87,94,82,94,82,47"/>
+<area shape="rect" id="Node000004" href="$classapp_1_1_match_notifier.html" title=" " alt="" coords="188,94,312,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="252,135,252,182,247,182,247,135"/>
+<area shape="rect" id="Node000005" href="$interfaceapp_1_1_subject.html" title=" " alt="" coords="185,5,275,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="239,46,250,93,244,94,233,47"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="299,5,480,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="359,42,271,96,268,91,356,37"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="336,94,510,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="393,131,339,161,284,184,282,180,337,156,391,126"/>
+</map>
