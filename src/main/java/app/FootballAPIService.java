@@ -10,10 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Implementation of the APIService interface for fetching football match results from a public API.
+ */
 public class FootballAPIService implements APIService{
-  private static final String API_URL = "https://v3.football.api-sports.io/fixtures?live=all";
-  private static final String API_KEY = "1da0a4f3da1938f5901dae68c725194f"; // Tu clave API
+  private static final String API_URL = "https://v3.football.api-sports.io/fixtures?live=all"; // API URL
+  private static final String API_KEY = "1da0a4f3da1938f5901dae68c725194f"; // API Key
 
+  /**
+   * Fetches the ongoing football match results from the API.
+   *
+   * @return A map containing the match results.
+   */
   @Override
   public Map<String, Match> fetchMatchResults() {
     try {
@@ -23,7 +31,7 @@ public class FootballAPIService implements APIService{
       connection.setRequestProperty("x-rapidapi-host", "v3.football.api-sports.io");
       connection.setRequestMethod("GET");
 
-      // Verificar el código de respuesta HTTP
+      // Check if the response code is 200 (OK)
       int responseCode = connection.getResponseCode();
       if (responseCode != 200) {
         System.out.println("Error al obtener los resultados. Código de error: " + responseCode);
@@ -37,7 +45,7 @@ public class FootballAPIService implements APIService{
       }
       scanner.close();
 
-      // Parsear y devolver los resultados en un Map
+      // Parse the JSON response to a map of match results
       return parseMatchResults(result.toString());
     } catch (IOException e) {
       e.printStackTrace();
@@ -45,6 +53,12 @@ public class FootballAPIService implements APIService{
     }
   }
 
+  /**
+   * Parses the JSON response from the API to a map of match results.
+   *
+   * @param json The JSON response from the API.
+   * @return A map containing the match results.
+   */
   @Override
   public Map<String, Match> parseMatchResults(String json) {
     System.out.println("JSON Response: " + json);
@@ -52,8 +66,9 @@ public class FootballAPIService implements APIService{
     JsonObject response = JsonParser.parseString(json).getAsJsonObject();
     JsonArray fixtures = response.getAsJsonArray("response");
 
-    Map<String, Match> ongoingMatches = new HashMap<>();
+    Map<String, Match> ongoingMatches = new HashMap<>(); // Map to store the ongoing matches
 
+    // Iterate over the fixtures and create a Match object for each ongoing match
     for (var fixtureElement : fixtures) {
       JsonObject fixture = fixtureElement.getAsJsonObject();
       JsonObject teams = fixture.getAsJsonObject("teams");
@@ -63,30 +78,35 @@ public class FootballAPIService implements APIService{
       JsonObject fixtureDetails = fixture.getAsJsonObject("fixture");
 
       String homeTeam = teams.has("home") && teams.getAsJsonObject("home").has("name")
-              ? teams.getAsJsonObject("home").get("name").getAsString() : "Unknown";
+              ? teams.getAsJsonObject("home").get("name").getAsString() : "Unknown"; // Get the home team name
 
       String awayTeam = teams.has("away") && teams.getAsJsonObject("away").has("name")
-              ? teams.getAsJsonObject("away").get("name").getAsString() : "Unknown";
+              ? teams.getAsJsonObject("away").get("name").getAsString() : "Unknown"; // Get the away team name
 
-      String matchId = fixtureDetails.has("id") ? fixtureDetails.get("id").getAsString() : "Unknown";
+      String matchId = fixtureDetails.has("id") ? fixtureDetails.get("id").getAsString() : "Unknown"; // Get the match ID
 
-      // Obtener el minuto actual del partido
       int timeElapsed = fixtureStatus.has("elapsed") && !fixtureStatus.get("elapsed").isJsonNull()
               ? fixtureStatus.get("elapsed").getAsInt()
-              : 0;
+              : 0; // Get the time elapsed in the match
 
-      boolean isFinished = status != null && status.has("long") && status.get("long").getAsString().equals("Finished");
+      boolean isFinished = status != null && status.has("long") && status.get("long").getAsString().equals("Finished"); // Check if the match is finished
 
-      int homeGoals = getGoals(goals, "home");
-      int awayGoals = getGoals(goals, "away");
+      int homeGoals = getGoals(goals, "home"); // Get the home team goals
+      int awayGoals = getGoals(goals, "away"); // Get the away team goals
 
-      Match match = new Match(homeTeam, awayTeam, homeGoals, awayGoals, matchId, timeElapsed, isFinished);
-      ongoingMatches.put(matchId, match);
+      Match match = new Match(homeTeam, awayTeam, homeGoals, awayGoals, matchId, timeElapsed, isFinished); // Create a Match object
+      ongoingMatches.put(matchId, match); // Add the match to the map
     }
     return ongoingMatches;
   }
 
-  // Método para obtener los goles de un equipo
+  /**
+   * Gets the goals scored by a team from the JSON object.
+   *
+   * @param goals The JSON object containing the goals.
+   * @param teamType The type of team (home or away).
+   * @return The number of goals scored by the team.
+   */
   private int getGoals(JsonObject goals, String teamType) {
     try {
       if (goals.has(teamType) && !goals.get(teamType).isJsonNull()) {
