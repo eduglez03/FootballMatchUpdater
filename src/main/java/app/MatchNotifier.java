@@ -3,23 +3,30 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-// Clase que notifica a los observadores actua como sujeto que esta pendeinte de los cambios
+/**
+ * Class to notify changes to observers
+ */
 public class MatchNotifier implements Subject {
-    private List<UserSubscriber> observers = new ArrayList<>();
+    private List<UserSubscriber> observers = new ArrayList<>(); // Observers list
 
-    // M�todo para a�adir observadores
+    /**
+     * Method to add observers
+     * @param observer Observer to add
+     */
     @Override
-    public void addObserver(UserSubscriber observer) {
-        observers.add(observer);
-    }
+    public void addObserver(UserSubscriber observer) { observers.add(observer); }
 
-    // M�todo para eliminar observadores
+    /**
+     * Method to remove observers
+     * @param observer Observer to remove
+     */
     @Override
-    public void removeObserver(UserSubscriber observer) {
-        observers.remove(observer);
-    }
+    public void removeObserver(UserSubscriber observer) { observers.remove(observer); }
 
-    // M�todo para notificar cambios
+    /**
+     * Method to notify changes to observers
+     * @param match Match to notify
+     */
     @Override
     public void notifyChange(Match match) {
         for (UserSubscriber observer : observers) {
