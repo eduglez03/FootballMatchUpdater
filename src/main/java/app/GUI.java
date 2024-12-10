@@ -83,3 +83,30 @@ public class GUI {
 
         registerFrame.setVisible(true);
     }
+
+    private void createUserWindow(String username) {
+        JFrame userFrame = new JFrame("Notificaciones - " + username);
+        userFrame.setSize(400, 300);
+        userFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JTextArea notificationArea = new JTextArea();
+        notificationArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(notificationArea);
+
+        userFrame.add(scrollPane);
+        userFrame.setVisible(true);
+
+        // Crear y registrar al usuario como suscriptor
+        UserSubscriber subscriber = new UserSubscriber(username, userNotificationAreas) {
+            @Override
+            public void update(Match match) {
+                super.update(match);
+            }
+        };
+        subscribers.add(subscriber);
+        matchNotifier.addObserver(subscriber);
+
+        // Guardar el área de notificación para este usuario
+        userNotificationAreas.put(username, notificationArea);
+    }
+}
