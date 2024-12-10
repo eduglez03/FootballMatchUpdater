@@ -57,3 +57,29 @@ public class GUI {
 
         mainFrame.setVisible(true);
     }
+
+    private void registerUsers(JFrame parentFrame) {
+        JFrame registerFrame = new JFrame("Registrar usuarios");
+        registerFrame.setSize(250, 200);
+        registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        registerFrame.setLayout(new BorderLayout());
+
+        JLabel instructionLabel = new JLabel("Introduce los nombres de los usuarios (separados por comas):");
+        JTextField userInputField = new JTextField();
+
+        JButton submitButton = new JButton("Registrar");
+        submitButton.addActionListener(e -> {
+            String[] usernames = userInputField.getText().split(",");
+            for (String username : usernames) {
+                createUserWindow(username.trim());
+            }
+            registerFrame.dispose();
+            run(); // Iniciar el sistema de actualizaciones si no está en ejecución
+        });
+
+        registerFrame.add(instructionLabel, BorderLayout.NORTH);
+        registerFrame.add(userInputField, BorderLayout.CENTER);
+        registerFrame.add(submitButton, BorderLayout.SOUTH);
+
+        registerFrame.setVisible(true);
+    }
