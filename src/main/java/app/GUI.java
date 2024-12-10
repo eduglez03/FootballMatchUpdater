@@ -1,6 +1,9 @@
 package app;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -33,33 +36,33 @@ public class GUI {
         JFrame mainFrame = new JFrame("Sistema de Notificaciones");
         mainFrame.setSize(400, 300);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new GridLayout(4, 1));  // Aumentamos las filas para incluir el nuevo botón
+        mainFrame.setLayout(new GridLayout(4, 1));  // Aumentamos las filas para incluir el nuevo botï¿½n
 
         JLabel titleLabel = new JLabel("Sistema de notificaciones de partidos", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
         JButton liveMatchesButton = new JButton("Mostrar partidos en directo");
         JButton registerButton = new JButton("Registrarme");
-        JButton exitButton = new JButton("Salir");  // Nuevo botón "Salir"
+        JButton exitButton = new JButton("Salir");  // Nuevo botï¿½n "Salir"
 
-        // Acción para el botón de "Mostrar partidos en directo"
+        // Acciï¿½n para el botï¿½n de "Mostrar partidos en directo"
         liveMatchesButton.addActionListener(e -> showLiveMatches(mainFrame));
 
-        // Acción para el botón de "Registrarme"
+        // Acciï¿½n para el botï¿½n de "Registrarme"
         registerButton.addActionListener(e -> registerUsers(mainFrame));
 
-        // Acción para el botón de "Salir"
+        // Acciï¿½n para el botï¿½n de "Salir"
         exitButton.addActionListener(e -> {
             // Cerrar la ventana principal y terminar el programa
             mainFrame.dispose();
-            System.exit(0);  // Finaliza la ejecución del programa
+            System.exit(0);  // Finaliza la ejecuciï¿½n del programa
         });
 
-        // Añadir los componentes a la ventana
+        // Aï¿½adir los componentes a la ventana
         mainFrame.add(titleLabel);
         mainFrame.add(liveMatchesButton);
         mainFrame.add(registerButton);
-        mainFrame.add(exitButton);  // Añadir el botón "Salir"
+        mainFrame.add(exitButton);  // Aï¿½adir el botï¿½n "Salir"
 
         mainFrame.setVisible(true);
     }
@@ -80,7 +83,7 @@ public class GUI {
                 createUserWindow(username.trim());
             }
             registerFrame.dispose();
-            run(); // Iniciar el sistema de actualizaciones si no está en ejecución
+            run(); // Iniciar el sistema de actualizaciones si no estï¿½ en ejecuciï¿½n
         });
 
         registerFrame.add(instructionLabel, BorderLayout.NORTH);
@@ -92,7 +95,7 @@ public class GUI {
 
     private void showLiveMatches(JFrame parentFrame) {
         JFrame liveMatchesFrame = new JFrame("Partidos en directo");
-        liveMatchesFrame.setSize(500, 500);  // Aumentar el tamaño para mejorar la disposición
+        liveMatchesFrame.setSize(500, 500);  // Aumentar el tamaï¿½o para mejorar la disposiciï¿½n
         liveMatchesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         liveMatchesFrame.setLayout(new BorderLayout(10, 10)); // Espaciado entre los componentes
 
@@ -102,21 +105,21 @@ public class GUI {
         JTable matchesTable = new JTable(tableModel);
 
         // Configurar la tabla
-        matchesTable.setDefaultEditor(Object.class, null);  // Desactivar edición de celdas
+        matchesTable.setDefaultEditor(Object.class, null);  // Desactivar ediciï¿½n de celdas
         matchesTable.getTableHeader().setReorderingAllowed(false); // Desactivar reordenamiento de columnas
         matchesTable.setAutoCreateRowSorter(true); // Para ordenar las filas
         matchesTable.setShowGrid(true); // Mostrar divisiones entre filas y columnas
         matchesTable.setGridColor(Color.BLACK); // Color de las divisiones
         matchesTable.setRowHeight(30); // Ajustar altura de las filas
-        matchesTable.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente más grande para las filas
+        matchesTable.setFont(new Font("Arial", Font.PLAIN, 14)); // Fuente mï¿½s grande para las filas
 
         // Personalizar la fila de encabezados
         JTableHeader header = matchesTable.getTableHeader();
         header.setBackground(new Color(220, 220, 220)); // Color de fondo del encabezado
-        header.setFont(new Font("Arial", Font.BOLD, 14)); // Fuente en negrita y tamaño
+        header.setFont(new Font("Arial", Font.BOLD, 14)); // Fuente en negrita y tamaï¿½o
         header.setPreferredSize(new Dimension(0, 40)); // Aumentar altura del encabezado
 
-        // Alineación de las columnas
+        // Alineaciï¿½n de las columnas
         for (int i = 0; i < matchesTable.getColumnCount(); i++) {
             matchesTable.getColumnModel().getColumn(i).setCellRenderer(new DefaultTableCellRenderer() {
                 @Override
@@ -148,27 +151,27 @@ public class GUI {
 
         JScrollPane scrollPane = new JScrollPane(matchesTable);
 
-        // Botón de "Volver" estilizado
+        // Botï¿½n de "Volver" estilizado
         JButton backButton = new JButton("Volver");
-        backButton.setFont(new Font("Arial", Font.BOLD, 14));  // Fuente más grande y en negrita
-        backButton.setBackground(new Color(70, 130, 180));  // Color de fondo del botón
+        backButton.setFont(new Font("Arial", Font.BOLD, 14));  // Fuente mï¿½s grande y en negrita
+        backButton.setBackground(new Color(70, 130, 180));  // Color de fondo del botï¿½n
         backButton.setForeground(Color.BLACK);  // Color del texto
-        backButton.setFocusPainted(false);  // Eliminar el foco del botón
-        backButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Añadir relleno
+        backButton.setFocusPainted(false);  // Eliminar el foco del botï¿½n
+        backButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Aï¿½adir relleno
         backButton.addActionListener(e -> liveMatchesFrame.dispose());
 
         // Crear un JPanel para el encabezado y centrarlo
         JPanel headerPanel = new JPanel();
         headerPanel.setLayout(new BorderLayout());
         JLabel titleLabel = new JLabel("Partidos en Directo", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));  // Fuente más grande y en negrita
-        titleLabel.setForeground(new Color(70, 130, 180));  // Color del texto del título
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));  // Fuente mï¿½s grande y en negrita
+        titleLabel.setForeground(new Color(70, 130, 180));  // Color del texto del tï¿½tulo
         headerPanel.add(titleLabel, BorderLayout.CENTER);
 
-        // Añadir componentes al frame
-        liveMatchesFrame.add(headerPanel, BorderLayout.NORTH);  // Título en el norte
+        // Aï¿½adir componentes al frame
+        liveMatchesFrame.add(headerPanel, BorderLayout.NORTH);  // Tï¿½tulo en el norte
         liveMatchesFrame.add(scrollPane, BorderLayout.CENTER); // Tabla en el centro
-        liveMatchesFrame.add(backButton, BorderLayout.SOUTH);  // Botón en el sur
+        liveMatchesFrame.add(backButton, BorderLayout.SOUTH);  // Botï¿½n en el sur
 
         liveMatchesFrame.setVisible(true);
     }
@@ -195,7 +198,7 @@ public class GUI {
         subscribers.add(subscriber);
         matchNotifier.addObserver(subscriber);
 
-        // Guardar el área de notificación para este usuario
+        // Guardar el ï¿½rea de notificaciï¿½n para este usuario
         userNotificationAreas.put(username, notificationArea);
     }
 }
